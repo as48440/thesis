@@ -1,0 +1,11 @@
+clear
+load('prices.mat')
+
+half_hour_prices = zeros(48*366,1);
+
+for i = 1:17567
+    half_hour_prices(i,:) = mean(prices(6*(i-1)+1:6*i));
+
+end
+
+half_

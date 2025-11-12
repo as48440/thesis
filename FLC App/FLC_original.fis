@@ -1,0 +1,69 @@
+[System]
+Name='evflc_five'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='price'
+Range=[-100 400]
+NumMFs=5
+MF1='very_low':'trimf',[-100 -100 25]
+MF2='low':'trimf',[-100 25 150]
+MF3='medium':'trimf',[25 150 275]
+MF4='high':'trimf',[150 275 400]
+MF5='very_high':'trimf',[275 400 400]
+
+[Input2]
+Name='SoC'
+Range=[0 1]
+NumMFs=5
+MF1='very_low':'trimf',[0 0 0.25]
+MF2='low':'trimf',[0 0.25 0.5]
+MF3='medium':'trimf',[0.25 0.5 0.75]
+MF4='high':'trimf',[0.5 0.75 1]
+MF5='very_high':'trimf',[0.75 1 1]
+
+[Output1]
+Name='power'
+Range=[-12 12]
+NumMFs=5
+MF1='high_negative':'trimf',[-12 -12 -6]
+MF2='negative':'trimf',[-12 -6 0]
+MF3='zero':'trimf',[-6 0 6]
+MF4='positive':'trimf',[0 6 12]
+MF5='high_positive':'trimf',[6 12 12]
+
+[Rules]
+1 1, 5 (1) : 1
+2 1, 5 (1) : 1
+3 1, 4 (1) : 1
+4 1, 4 (1) : 1
+5 1, 3 (1) : 1
+1 2, 5 (1) : 1
+2 2, 4 (1) : 1
+3 2, 4 (1) : 1
+4 2, 3 (1) : 1
+5 2, 2 (1) : 1
+1 3, 4 (1) : 1
+2 3, 4 (1) : 1
+3 3, 3 (1) : 1
+4 3, 2 (1) : 1
+5 3, 2 (1) : 1
+1 4, 4 (1) : 1
+2 4, 3 (1) : 1
+3 4, 2 (1) : 1
+4 4, 2 (1) : 1
+5 4, 1 (1) : 1
+1 5, 3 (1) : 1
+2 5, 2 (1) : 1
+3 5, 2 (1) : 1
+4 5, 1 (1) : 1
+5 5, 1 (1) : 1

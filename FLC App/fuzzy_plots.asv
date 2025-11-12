@@ -1,0 +1,121 @@
+%% Fuzzy plots
+close all;
+clear;
+
+%% Original FIS
+ev = readfis('FLC_original.fis');
+figure
+sgtitle('FLC 1: Membership Functions')
+subplot 311
+set(gca,'FontSize',10,'Units','normalized');
+[x,y] = plotmf(ev,'input',1);
+plot(x,y,'LineWidth',1.5)
+text(-55, 0.8, 'VL', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(20, 0.8, 'L', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(145, 0.8, 'M', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(270, 0.8, 'H', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(340, 0.8, 'VH', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Spot Price ($/MWh)')
+
+subplot 312
+[x,y] = plotmf(ev,'input',2);
+plot(x,y,'LineWidth',1.5)
+text(0.09, 0.8, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(0.24, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(0.49, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(0.74, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(0.89, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('SoC (%/100)')
+
+subplot 313
+[x,y] = plotmf(ev,'output',1);
+plot(x,y,'LineWidth',1.5)
+xlim([-12 12])
+text(-10, 0.8, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(-6.2, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(-0.3, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(5.8, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(9.5, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Power (kW)')
+
+%% GA Optimised FIS
+ev = readfis('FLC_GA_optimised.fis');
+figure
+sgtitle('FLC 2: GA Optimised Membership Functions')
+subplot 311
+set(gca,'FontSize',10,'Units','normalized');
+[x,y] = plotmf(ev,'input',1);
+plot(x,y,'LineWidth',1.5)
+text(-55, 0.8, 'VL', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(0, 0.8, 'L', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(90, 0.8, 'M', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(205, 0.8, 'H', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(290, 0.8, 'VH', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Spot Price ($/MWh)')
+
+subplot 312
+[x,y] = plotmf(ev,'input',2);
+plot(x,y,'LineWidth',1.5)
+text(0.01, 0.5, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(0.03, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(0.3, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(0.77, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(0.91, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('SoC (%/100)')
+
+subplot 313
+[x,y] = plotmf(ev,'output',1);
+plot(x,y,'LineWidth',1.5)
+xlim([-12 12])
+text(-8, 0.8, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(-5, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(-0.6, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(4.7, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(7, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Power (kW)')
+
+%% GA optimised with battdeg FIS 
+
+ev = readfis('FLC_GA_optimised_batt.fis');
+figure
+sgtitle('FLC 3: GA Battery Optimised Membership Functions')
+subplot 311
+set(gca,'FontSize',10,'Units','normalized');
+[x,y] = plotmf(ev,'input',1);
+plot(x,y,'LineWidth',1.5)
+text(-55, 0.8, 'VL', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(0, 0.8, 'L', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(90, 0.8, 'M', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(205, 0.8, 'H', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(290, 0.8, 'VH', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Spot Price ($/MWh)')
+
+subplot 312
+[x,y] = plotmf(ev,'input',2);
+plot(x,y,'LineWidth',1.5)
+text(0.01, 0.5, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(0.03, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(0.3, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(0.77, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(0.91, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('SoC (%/100)')
+
+subplot 313
+[x,y] = plotmf(ev,'output',1);
+plot(x,y,'LineWidth',1.5)
+xlim([-12 12])
+text(-10.8, 0.8, 'HN', 'FontSize', 10, 'Color', [0, 0.4470, 0.7410]);
+text(-8, 0.8, 'N', 'FontSize', 10, 'Color', [0.8500, 0.3250, 0.0980]);
+text(-1, 0.8, 'Z', 'FontSize', 10, 'Color', [0.9290, 0.6940, 0.1250]);
+text(4.7, 0.8, 'P', 'FontSize', 10, 'Color', [0.4940, 0.1840, 0.5560]);
+text(11, 0.8, 'HP', 'FontSize', 10, 'Color', [0.4660, 0.6740, 0.1880]);
+ylabel('');
+xlabel('Power (kW)')
